@@ -1,0 +1,58 @@
+<!-- Code By Meng Li -->
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div id="success"></div>
+    <h3 class="mb-3" id="add-title"> <strong>ADD</strong> YOUR GAME HERE
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Purple_arrow_down.svg/768px-Purple_arrow_down.svg.png" alt="Down Arrow" id="arrow">
+    </h3>
+
+    <form id="add-game-form" method="POST">
+        <!-- Game Name -->
+        <div class="mb-3">
+            <label for="name-input" class="form-label edit-input">Game Title</label>
+            <input type="text" class="form-control" id="name-input" name="name">
+            <div class="text-danger small" id="name-warning"></div>
+        </div>
+
+        <!-- Image URL -->
+        <div class="mb-3">
+            <label for="image-input" class="form-label edit-input">Game Image URL</label>
+            <input type="text" class="form-control" id="image-input" name="image">
+            <div class="text-danger small" id="image-warning"></div>
+        </div>
+
+        <!-- Introduction -->
+        <div class="mb-3">
+            <label for="intro-input" class="form-label edit-input">Introduction</label>
+            <textarea class="form-control" id="intro-input" name="introduction" rows="3"></textarea>
+            <div class="text-danger small" id="intro-warning"></div>
+        </div>
+
+        <!-- Price -->
+        <div class="mb-3">
+            <label for="price-input" class="form-label edit-input">Price ($)</label>
+            <input type="text" class="form-control" id="price-input" name="price">
+            <div class="text-danger small" id="price-warning"></div>
+        </div>
+
+        <!-- Rating -->
+        <div class="mb-3">
+            <label for="rate-input" class="form-label edit-input">Rating (eg. "Overwhelmingly Positive")</label>
+            <input type="text" class="form-control" id="rate-input" name="rate">
+            <div class="text-danger small" id="rate-warning"></div>
+        </div>
+
+        <!-- Supportive Systems -->
+        <div class="mb-3">
+            <label for="system-input" class="form-label edit-input">Supported Systems (comma separated)</label>
+            <input type="text" class="form-control" id="system-input" name="supportive_system">
+            <div class="text-danger small" id="system-warning"></div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn" id="submit-btn">Submit</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,60 @@
+<!-- Code by Meng Li -->
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="view-title">{{ game.title }}</div>
+    <div class="view-rate">" {{ game.rate }} "</div>
+    <div class="row">
+        <img src="{{ game.image }}" alt="{{ game.title }}" class="view-image">
+        <span class="view-price"> Now:  {{ game.price }}$ </span>
+    </div>
+    <div class="system-container">
+        <span>Available On:</span>
+        <ul class="system-list">
+            {% for system in game.supportive_system %}
+                <li class="system-item">
+                    {% if system == "VR" %}
+                        <img src="https://i.postimg.cc/LX1msD6J/2025-03-07-11-51-25.png" alt="VR Icon" class="vr-icons">
+                    {% endif %}
+                    {% if system == "Windows" %}
+                        <img src="https://icones.pro/wp-content/uploads/2021/06/icone-windows-violet.png" alt="Windows Icon" class="win-icons">
+                    {% endif %}
+                    {% if system == "MAC" %}
+                        <img src="https://icones.pro/wp-content/uploads/2021/04/symbole-apple-icone-logo-violette.png" alt="iOS Icon" class="mac-icons">
+                    {% endif %}
+                    {{ system }}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+    <div class="view-info">
+        <!-- Introduction Section -->
+        <div class="view-intro">
+            {{ game.introduction }}
+        </div>
+    
+        <!-- Similar Platform Section -->
+        <div class="view-similar">
+            <strong>Similar Platform:</strong>
+            <ul>
+                {% for same_id in game.same_system %}
+                    {% if same_id in games %}
+                        <li class="similar-item">
+                            <a href="/view/{{ same_id }}" class="similar-link">
+                                <img src="{{ games[same_id].image }}" alt="{{ games[same_id].title }}" class="similar-img">
+                                <span class="similar-title">{{ games[same_id].title }}</span>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li>Game ID {{ same_id }} not found</li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    
+    <button class="btn" id="edit-btn" data-id="{{ game.id }}">Edit</button>
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+<!-- Code By Meng Li -->
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div id="intro">Welcome and Find Your Special Horror Games Here!</div>
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4" id="top3">THE TOP3 POPULAR</div>
+        <div class="col-4"></div>
+    </div>
+    <div class="row" id="top">
+        {% for game in games %}
+        <div class="col-md-4 mb-4">
+            <div class="card search-item h-100 shadow-sm game-card">
+                <a href="{{ url_for('game_detail', id=game.id) }}" class="text-decoration-none text-dark">
+                    <img src="{{ game.image }}" class="card-img-top img-fluid" alt="{{ game.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ game.title }}</h5>
+                        <p class="info">RATE: {{ game.rate }}</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
